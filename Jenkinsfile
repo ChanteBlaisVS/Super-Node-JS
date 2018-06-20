@@ -1,4 +1,4 @@
-node ('docker2'){
+node ('docker1'){
     
     stage ('Checkout SCM') {
         checkout scm        
