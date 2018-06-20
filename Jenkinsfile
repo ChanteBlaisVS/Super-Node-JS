@@ -12,7 +12,7 @@ node ('docker1'){
         """
     }   
     stage ('Archive PDF') {
-        archiveArtifacts artifacts: '/BlackDuck_RiskReport/.pdf'
+        archiveArtifacts artifacts: '*.pdf'
     }
 }
 
