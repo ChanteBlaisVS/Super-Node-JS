@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM buildpack-deps:stretch
 
 # Install OpenJDK-8
 RUN apt-get update && \
