@@ -1,4 +1,4 @@
-FROM buildpack-deps:stretch
+FROM node:latest
 
 # Install OpenJDK-8
 RUN apt-get update && \
