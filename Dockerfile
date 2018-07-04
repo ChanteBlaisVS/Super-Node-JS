@@ -1,7 +1,8 @@
 FROM node:latest
 
 # Install OpenJDK-8
-RUN apt-get update && \
+RUN add-apt-repository ppa:webupd8team/java && \
+    apt-get update && \
     apt-get install -y openjdk-8-jdk && \
     apt-get install -y ant && \
     apt-get clean;
