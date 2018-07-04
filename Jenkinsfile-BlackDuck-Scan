@@ -7,7 +7,7 @@ def customImage;
     }
     
     stage ('Build Image') {
-        customImage = docker.build("super-node-js:${env.BUILD_ID}")
+        customImage = docker.build("super-node-js:test")
     }   
         
     stage ('Black Duck Scan') {
