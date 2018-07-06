@@ -1,16 +1,12 @@
-FROM openjdk:latest
+FROM node:carbon
 
-RUN apt-get install -y curl \
-  && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
-  && apt-get install -y nodejs \
-  && curl -L https://www.npmjs.com/install.sh | sh \
-RUN npm install -g grunt grunt-cli
-
-#Create app directory
+# Create app directory
 WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package*.json ./
+
+RUN npm install
 
 # Bundle app source
 COPY . .
