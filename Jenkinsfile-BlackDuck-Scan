@@ -1,4 +1,4 @@
-node ('docker2'){
+node ('docker1'){
 
 def customImage;
     
