@@ -1,0 +1,20 @@
+node ('docker2'){
+
+def customImage;
+    
+    stage ('Checkout SCM') {
+        checkout scm        
+    }
+    
+    stage ('Build Image') {
+        customImage = docker.build("super-node-js:test")
+    }   
+        
+    stage ('Black Duck Scan') {
+         sh """
+         export DETECT_LATEST_RELEASE_VERSION=4.0.3
+         curl -O https://artifactory.core.rcsops.com/artifactory/hub-detect/hub-detect-virtustream.sh
+         chmod +x hub-detect-virtustream.sh && ./hub-detect-virtustream.sh --blackduck.hub.url='https://bduck01.core.rcsops.com' --blackduck.hub.api.token=N2E2MDkyODktNGZlNi00ZmNiLThhNDUtM2I5M2NmNjhiNTkwOmE3ZTBlYzAwLTRjOWEtNDhlNS1hNDkxLWE1ZjcwOWE3YzU1NA== --detect.project.name="Tutorial Project" --detect.project.version.name=docker --detect.docker.image="super-node-js:test"
+         """    
+     }  
+}
